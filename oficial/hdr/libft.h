@@ -6,7 +6,7 @@
 /*   By: pcristin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 18:35:49 by pcristin          #+#    #+#             */
-/*   Updated: 2019/05/08 13:34:58 by pcristin         ###   ########.fr       */
+/*   Updated: 2019/05/13 09:22:13 by pcristin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,6 @@ char			*ft_strjoin(char const *s1, char const *s2);
 char			*ft_strsub(char const *s, unsigned int start, size_t len);
 unsigned int	ft_whcount(char const *s);
 char			*ft_strtrim(char const *s);
+unsigned int	delimc(char const *s, char c);
+char			**ft_strsplit(char const *s, char c);
 #endif

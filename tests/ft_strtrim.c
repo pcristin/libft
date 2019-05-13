@@ -7,18 +7,14 @@ unsigned int	ft_strlen(char const *s);
 
 char	*ft_strtrim(char const *s)
 {
-	//unsigned int	wh;
 	int				i;
+	int j;
 	char			*new;
-	int				j;
 
-	//wh = 0;
-	i = 0;
 	j = 0;
+	i = 0;
 	new = (char *)malloc(sizeof(char) * (ft_strlen(s) - ft_whcount(s)));
-	//wh = (sizeof(char) * (ft_strlen(s) - ft_whcount(s)));
-	//printf("%u", wh);
-	while (s[i] == ' ' || s[i] == '\t' || s[i] == '\n')
+	while(s[i] != '\0')
 		i++;
 	while (j < (ft_strlen(s) - ft_whcount(s)))
 	{
@@ -26,5 +22,6 @@ char	*ft_strtrim(char const *s)
 		i++;
 		j++;
 	}
+	new[i] = '\0';
 	return (new);
 }

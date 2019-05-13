@@ -1,36 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striter.c                                       :+:      :+:    :+:   */
+/*   ft_delimcount.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pcristin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/09 11:45:17 by pcristin          #+#    #+#             */
-/*   Updated: 2019/05/13 11:33:07 by pcristin         ###   ########.fr       */
+/*   Created: 2019/05/13 09:17:32 by pcristin          #+#    #+#             */
+/*   Updated: 2019/05/13 09:21:26 by pcristin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../hdr/libft.h"
 
-void	ft_striter(char *s, void (*f)(char *))
+unsigned int	delimc(char const *s, char c)
 {
-	unsigned int i;
-	unsigned int len;
+	unsigned int	res;
 
-	i = 0;
-	len = 0;
-	if (s != NULL & f != NULL)
+	res = 0;
+	while (*s != '\0')
 	{
-		while (s[i] != '\0')
-		{
-			i++;
-			len++;
-		}
-		i = 0;
-		while (i < len)
-		{
-			f(&s[i]);
-			i++;
-		}
+		if (*s == c)
+			res++;
+		s++;
 	}
+	return (res);
 }

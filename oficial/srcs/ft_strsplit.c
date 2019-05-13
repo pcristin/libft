@@ -1,36 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striter.c                                       :+:      :+:    :+:   */
+/*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pcristin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/09 11:45:17 by pcristin          #+#    #+#             */
-/*   Updated: 2019/05/13 11:33:07 by pcristin         ###   ########.fr       */
+/*   Created: 2019/05/10 18:48:57 by pcristin          #+#    #+#             */
+/*   Updated: 2019/05/13 12:06:08 by pcristin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../hdr/libft.h"
 
-void	ft_striter(char *s, void (*f)(char *))
+unsigned int	word_count(char const *s, char c)
 {
-	unsigned int i;
-	unsigned int len;
+	int	i;
+	int	res;
 
 	i = 0;
-	len = 0;
-	if (s != NULL & f != NULL)
+	res = 0;
+	while (*s != '\0')
 	{
-		while (s[i] != '\0')
-		{
-			i++;
-			len++;
-		}
-		i = 0;
-		while (i < len)
-		{
-			f(&s[i]);
-			i++;
-		}
+		if (*s != c)
+
 	}
+}
+
+char			**ft_strsplit(char const *s, char c)
+{
+	int		i;
+	char	**res;
+
+	i = 0;
+	res = (char **)malloc(sizeof(*res) * (ft_strlen(s) - delimc(s, c) + 1));
+	if (!res || !s)
+		return (NULL);
+	while (*s != '\0')
+	{
+		while (*s == c)
+			s++;
+	}
+	return (res);
 }
