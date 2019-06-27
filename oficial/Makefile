@@ -6,15 +6,15 @@
 #    By: pcristin <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/05 18:35:23 by pcristin          #+#    #+#              #
-#    Updated: 2019/05/13 09:18:51 by pcristin         ###   ########.fr        #
+#    Updated: 2019/06/27 17:19:37 by pcristin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC = ./srcs
 
-CF = $(SRC)/ft_memalloc.c $(SRC)/ft_memdel.c $(SRC)/ft_strnew.c $(SRC)/ft_strdel.c $(SRC)/ft_strclr.c $(SRC)/ft_striter.c $(SRC)/ft_striteri.c $(SRC)/ft_strmap.c $(SRC)/ft_strmapi.c $(SRC)/ft_strcmp.c $(SRC)/ft_strlen.c $(SRC)/ft_strequ.c $(SRC)/ft_strnequ.c $(SRC)/ft_strncmp.c $(SRC)/ft_strjoin.c $(SRC)/ft_strsub.c $(SRC)/ft_strtrim.c $(SRC)/ft_whcount.c $(SRC)/ft_delimcount.c $(SRC)/ft_strsplit.c
+CF = $(SRC)/ft_memalloc.c $(SRC)/ft_memdel.c $(SRC)/ft_strnew.c $(SRC)/ft_strdel.c $(SRC)/ft_strclr.c $(SRC)/ft_striter.c $(SRC)/ft_striteri.c $(SRC)/ft_strmap.c $(SRC)/ft_strmapi.c $(SRC)/ft_strcmp.c $(SRC)/ft_strlen.c $(SRC)/ft_strequ.c $(SRC)/ft_strnequ.c $(SRC)/ft_strncmp.c $(SRC)/ft_strjoin.c $(SRC)/ft_strsub.c $(SRC)/ft_strtrim.c $(SRC)/ft_whcount.c $(SRC)/ft_strsplit.c $(SRC)/ft_putchar.c $(SRC)/ft_putstr.c $(SRC)/ft_putendl.c $(SRC)/ft_putnbr.c $(SRC)/ft_putchar_fd.c $(SRC)/ft_putstr_fd.c $(SRC)/ft_putendl_fd.c $(SRC)/ft_putnbr_fd.c
 
-OF = ft_memalloc.o ft_memdel.o ft_strnew.o ft_strdel.o ft_strclr.o ft_striter.o ft_striteri.o ft_strmap.o ft_strmapi.o ft_strcmp.o ft_strlen.o ft_strequ.o ft_strnequ.o ft_strncmp.o ft_strjoin.o ft_strsub.o ft_strtrim.o ft_whcount.o ft_delimcount.o ft_strsplit.o
+OF = ft_memalloc.o ft_memdel.o ft_strnew.o ft_strdel.o ft_strclr.o ft_striter.o ft_striteri.o ft_strmap.o ft_strmapi.o ft_strcmp.o ft_strlen.o ft_strequ.o ft_strnequ.o ft_strncmp.o ft_strjoin.o ft_strsub.o ft_strtrim.o ft_whcount.o ft_strsplit.o ft_putchar.o ft_putstr.o ft_putendl.o ft_putnbr.o ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o
 
 HDR = ./hdr/libft.h
 
