@@ -6,7 +6,7 @@
 /*   By: pcristin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 18:35:49 by pcristin          #+#    #+#             */
-/*   Updated: 2019/06/27 17:18:55 by pcristin         ###   ########.fr       */
+/*   Updated: 2019/06/28 03:12:37 by pcristin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,6 @@ void			ft_putchar_fd(char c, int fd);
 void			ft_putstr_fd(char const *s, int fd);
 void			ft_putendl_fd(char const *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
+char            *ft_strcpy(char *s1, char const *s2);
+char		    *ft_itoa(int n);
 #endif
