@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pcristin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/28 03:09:23 by pcristin          #+#    #+#             */
-/*   Updated: 2019/06/28 18:40:33 by pcristin         ###   ########.fr       */
+/*   Created: 2019/06/28 13:47:52 by pcristin          #+#    #+#             */
+/*   Updated: 2019/06/28 14:00:32 by pcristin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../hdr/libft.h"
 
-char	*ft_strcpy(char *s1, char const *s2)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	size_t	i;
+	size_t			i;
+	unsigned char	*res;
 
 	i = 0;
-	while (s2[i] != '\0')
+	res = (unsigned char *)b;
+	while (len--)
 	{
-		s1[i] = s2[i];
+		res[i] = (unsigned char)c;
 		i++;
 	}
-	s1[i] = '\0';
-	return (s1);
+	return (res);
 }

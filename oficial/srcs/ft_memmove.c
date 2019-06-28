@@ -1,27 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pcristin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/28 03:09:23 by pcristin          #+#    #+#             */
-/*   Updated: 2019/06/28 18:40:33 by pcristin         ###   ########.fr       */
+/*   Created: 2019/06/28 16:56:57 by pcristin          #+#    #+#             */
+/*   Updated: 2019/06/28 17:49:31 by pcristin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../hdr/libft.h"
 
-char	*ft_strcpy(char *s1, char const *s2)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	size_t	i;
+	unsigned char	*dest;
+	unsigned char	*source;
 
-	i = 0;
-	while (s2[i] != '\0')
+	source = (unsigned char *)src;
+	dest = (unsigned char *)dst;
+	if ((dst == NULL && src == NULL) || dst == src)
+		return (dst);
+	if (dest < source)
 	{
-		s1[i] = s2[i];
-		i++;
+		while (len--)
+			*dest++ = *source++;
 	}
-	s1[i] = '\0';
-	return (s1);
+	else
+	{
+		dest = dest + len;
+		source = source + len;
+		while (len--)
+			*--dest = *--source;
+	}
+	return (dst);
 }

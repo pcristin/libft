@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pcristin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/28 03:09:23 by pcristin          #+#    #+#             */
-/*   Updated: 2019/06/28 18:40:33 by pcristin         ###   ########.fr       */
+/*   Created: 2019/06/28 14:58:02 by pcristin          #+#    #+#             */
+/*   Updated: 2019/06/28 17:25:31 by pcristin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../hdr/libft.h"
 
-char	*ft_strcpy(char *s1, char const *s2)
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	size_t	i;
+	unsigned char		ch;
+	unsigned char		*dest;
+	const unsigned char	*source;
 
-	i = 0;
-	while (s2[i] != '\0')
+	source = (const unsigned char *)src;
+	dest = (unsigned char *)dst;
+	ch = (unsigned char)c;
+	if (n == 0)
+		return (NULL);
+	while (n--)
 	{
-		s1[i] = s2[i];
-		i++;
+		*dest = *source;
+		if (ch == *source)
+			return ((void *)++dest);
+		dest++;
+		source++;
 	}
-	s1[i] = '\0';
-	return (s1);
+	return (NULL);
 }

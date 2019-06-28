@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pcristin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/28 03:09:23 by pcristin          #+#    #+#             */
-/*   Updated: 2019/06/28 18:40:33 by pcristin         ###   ########.fr       */
+/*   Created: 2019/06/28 18:01:20 by pcristin          #+#    #+#             */
+/*   Updated: 2019/06/28 18:17:40 by pcristin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../hdr/libft.h"
 
-char	*ft_strcpy(char *s1, char const *s2)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	size_t	i;
+	const unsigned char	*s3;
+	const unsigned char	*s4;
 
-	i = 0;
-	while (s2[i] != '\0')
+	s3 = (const unsigned char *)s1;
+	s4 = (const unsigned char *)s2;
+	if (n != 0)
 	{
-		s1[i] = s2[i];
-		i++;
+		while (n--)
+		{
+			if (*s3 != *s4)
+				return (*s3 - *s4);
+			s3++;
+			s4++;
+		}
 	}
-	s1[i] = '\0';
-	return (s1);
+	return (0);
 }
