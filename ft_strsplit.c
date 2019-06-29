@@ -6,21 +6,21 @@
 /*   By: pcristin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/08 12:25:58 by pcristin          #+#    #+#             */
-/*   Updated: 2019/06/29 17:55:35 by pcristin         ###   ########.fr       */
+/*   Updated: 2019/06/30 00:42:44 by pcristin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	size_t		words_counter(char const *s, char c)
+static	int		words_counter(char const *s, char c)
 {
-	size_t	i;
-	size_t	res;
+	int	i;
+	int	res;
 
 	i = 0;
 	res = 0;
 	if (!s)
-		return ((size_t)NULL);
+		return ((int)NULL);
 	if (s[i] == c)
 		i++;
 	while (s[i] != '\0')
@@ -32,15 +32,15 @@ static	size_t		words_counter(char const *s, char c)
 	return (res);
 }
 
-static size_t		*start_coord(char const *s, char c)
+static int		*start_coord(char const *s, char c)
 {
-	size_t	*starts;
-	size_t	i;
-	size_t	j;
+	int	*starts;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
-	starts = (size_t *)malloc(sizeof(size_t *) * (words_counter(s, c) + 1));
+	starts = (int *)malloc(sizeof(int *) * (words_counter(s, c) + 1));
 	if (!starts || !s)
 		return (NULL);
 	if (s[i] != c)
@@ -61,15 +61,15 @@ static size_t		*start_coord(char const *s, char c)
 	return (starts);
 }
 
-static size_t		*words_len(char const *s, char c)
+static int		*words_len(char const *s, char c)
 {
-	size_t	*res;
-	size_t	len;
-	size_t	k;
+	int	*res;
+	int	len;
+	int	k;
 
 	k = 0;
 	len = 0;
-	res = (size_t *)malloc(sizeof(size_t *) * words_counter(s, c) + 1);
+	res = (int *)malloc(sizeof(int *) * words_counter(s, c) + 1);
 	if (!res || !s)
 		return (NULL);
 	while (*s != '\0')
@@ -93,16 +93,16 @@ static size_t		*words_len(char const *s, char c)
 char				**ft_strsplit(char const *s, char c)
 {
 	char		**str;
-	size_t		i;
-	size_t		words;
-	size_t		*starts;
-	size_t		*lens;
+	int			i;
+	int			words;
+	int			*starts;
+	int			*lens;
 
 	starts = start_coord(s, c);
 	lens = words_len(s, c);
 	i = 0;
 	words = words_counter(s, c);
-	str = (char **)malloc(sizeof(char **) * words);
+	str = (char **)malloc(sizeof(char *) * words);
 	if (!str || !s)
 		return (NULL);
 	while (words)
