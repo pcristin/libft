@@ -6,7 +6,7 @@
 /*   By: pcristin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/08 12:25:58 by pcristin          #+#    #+#             */
-/*   Updated: 2019/06/30 00:42:44 by pcristin         ###   ########.fr       */
+/*   Updated: 2019/07/01 14:47:40 by pcristin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ static int		*start_coord(char const *s, char c)
 
 	i = 0;
 	j = 0;
-	starts = (int *)malloc(sizeof(int *) * (words_counter(s, c) + 1));
+	starts = (int *)malloc(sizeof(int *) * (words_counter(s, c)));
 	if (!starts || !s)
-		return (NULL);
+		return (starts);
 	if (s[i] != c)
 	{
 		starts[j] = i;
@@ -61,6 +61,18 @@ static int		*start_coord(char const *s, char c)
 	return (starts);
 }
 
+static	char	**mem_free_split(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		ft_strdel(&str[i++]);
+	free(str);
+	str = 0;
+	return (str);
+}
+
 static int		*words_len(char const *s, char c)
 {
 	int	*res;
@@ -69,9 +81,9 @@ static int		*words_len(char const *s, char c)
 
 	k = 0;
 	len = 0;
-	res = (int *)malloc(sizeof(int *) * words_counter(s, c) + 1);
+	res = (int *)malloc(sizeof(int *) * words_counter(s, c));
 	if (!res || !s)
-		return (NULL);
+		return (res);
 	while (*s != '\0')
 	{
 		if (*s != c)
@@ -81,7 +93,7 @@ static int		*words_len(char const *s, char c)
 				s++;
 				len++;
 			}
-			res[k++] = len;
+			res[k] = len;
 			k++;
 			len = 0;
 		}
@@ -90,26 +102,27 @@ static int		*words_len(char const *s, char c)
 	return (res);
 }
 
-char				**ft_strsplit(char const *s, char c)
+char			**ft_strsplit(char const *s, char c)
 {
-	char		**str;
-	int			i;
-	int			words;
-	int			*starts;
-	int			*lens;
+	char	**str;
+	int		i;
+	int		words;
+	int		*starts;
+	int		*lens;
 
 	starts = start_coord(s, c);
-	lens = words_len(s, c);
+	if (!(lens = words_len(s, c)))
+		ft_memdel((void *)starts);
 	i = 0;
 	words = words_counter(s, c);
-	str = (char **)malloc(sizeof(char *) * words);
-	if (!str || !s)
-		return (NULL);
-	while (words)
+	if (!(str = (char **)malloc(sizeof(char *) * (words + 1))))
+		return (str);
+	while (words--)
 	{
-		str[i] = ft_strsub(s, starts[i], lens[i]);
+		if ((str[i] = ft_strsub(s, starts[i], lens[i])) == 0)
+			return (mem_free_split(str));
 		i++;
-		words--;
 	}
+	str[i] = NULL;
 	return (str);
 }
