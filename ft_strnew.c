@@ -6,7 +6,7 @@
 /*   By: pcristin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/06 16:11:32 by pcristin          #+#    #+#             */
-/*   Updated: 2019/06/29 15:13:01 by pcristin         ###   ########.fr       */
+/*   Updated: 2019/07/02 22:16:41 by pcristin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strnew(size_t size)
 	char	*str;
 
 	i = 0;
+	if (size == (size_t)0 - 1)
+		return (NULL);
 	str = (char *)malloc((sizeof(char) * size) + 1);
 	if (!str)
 		return (NULL);
