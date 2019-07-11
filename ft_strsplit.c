@@ -6,7 +6,7 @@
 /*   By: pcristin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/08 12:25:58 by pcristin          #+#    #+#             */
-/*   Updated: 2019/07/01 15:34:31 by pcristin         ###   ########.fr       */
+/*   Updated: 2019/07/11 20:31:45 by pcristin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static	int		words_counter(char const *s, char c)
 	return (res);
 }
 
-static int		*start_coord(char const *s, char c)
+static int		*start_coord(char const *s, char c, int words)
 {
 	int	*starts;
 	int	i;
@@ -40,7 +40,7 @@ static int		*start_coord(char const *s, char c)
 
 	i = 0;
 	j = 0;
-	starts = (int *)malloc(sizeof(int *) * (words_counter(s, c)));
+	starts = (int *)malloc(sizeof(int *) * words);
 	if (!starts || !s)
 		return (starts);
 	if (s[i] != c)
@@ -73,7 +73,7 @@ static	char	**mem_free_split(char **str)
 	return (str);
 }
 
-static int		*words_len(char const *s, char c)
+static int		*words_len(char const *s, char c, int words)
 {
 	int	*res;
 	int	len;
@@ -81,14 +81,14 @@ static int		*words_len(char const *s, char c)
 
 	k = 0;
 	len = 0;
-	res = (int *)malloc(sizeof(int *) * words_counter(s, c));
+	res = (int *)malloc(sizeof(int *) * words);
 	if (!res || !s)
 		return (res);
 	while (*s != '\0')
 	{
 		if (*s != c)
 		{
-			while (*s != c)
+			while (*s != c && *s != '\0')
 			{
 				s++;
 				len++;
@@ -110,13 +110,17 @@ char			**ft_strsplit(char const *s, char c)
 	int		*starts;
 	int		*lens;
 
-	starts = start_coord(s, c);
-	if (!(lens = words_len(s, c)))
-		ft_memdel((void *)starts);
-	i = 0;
 	words = words_counter(s, c);
 	if (!(str = (char **)malloc(sizeof(char *) * (words + 1))))
 		return (str);
+	if (!(starts = start_coord(s, c, words)))
+		return (str);
+	if (!(lens = words_len(s, c, words)))
+	{
+		free(starts);
+		return (str);
+	}
+	i = 0;
 	while (words--)
 	{
 		if ((str[i] = ft_strsub(s, starts[i], lens[i])) == 0)
