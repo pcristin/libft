@@ -6,7 +6,7 @@
 /*   By: pcristin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/08 12:25:58 by pcristin          #+#    #+#             */
-/*   Updated: 2019/07/11 20:31:45 by pcristin         ###   ########.fr       */
+/*   Updated: 2019/07/15 13:54:02 by pcristin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,8 +111,8 @@ char			**ft_strsplit(char const *s, char c)
 	int		*lens;
 
 	words = words_counter(s, c);
-	if (!(str = (char **)malloc(sizeof(char *) * (words + 1))))
-		return (str);
+	if (!(str = (char **)malloc(sizeof(char *) * (words + 1))) || !s)
+		return (NULL);
 	if (!(starts = start_coord(s, c, words)))
 		return (str);
 	if (!(lens = words_len(s, c, words)))
