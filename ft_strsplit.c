@@ -20,7 +20,7 @@ static	int		words_counter(char const *s, char c)
 	i = 0;
 	res = 0;
 	if (!s)
-		return ((int)NULL);
+		return (0);
 	if (s[i] == c)
 		i++;
 	while (s[i] != '\0')
